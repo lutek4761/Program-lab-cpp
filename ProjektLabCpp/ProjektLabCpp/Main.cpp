@@ -8,9 +8,9 @@ using namespace std;
 
 int main() {
 	Data d;
-	d.Ustaw(1,1,2000);
+	d.Ustaw(1, 1, 2000);
+	cin >> d;
 	d.Koryguj();
-	d.Wypisz();
-	cout << endl <<  d.Porownaj(Data(11, 1, 200));
+	cout << d;
 	return 0;
 }

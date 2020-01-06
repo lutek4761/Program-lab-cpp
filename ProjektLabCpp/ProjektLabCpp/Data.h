@@ -2,6 +2,7 @@
 #pragma once
 #include <iostream>
 using namespace std;
+
 class Data
 {
 private:
@@ -17,5 +18,13 @@ public:
 	void Wpisz();
 	void Koryguj();
 	int Porownaj(const Data& wzor) const;
+	friend  ostream& operator<<(ostream& wy, const Data& d) {
+		return wy << d.Dzien() << "-" << d.Miesiac() << "-" << d.Rok();
+	}
+	friend istream& operator>>(istream& we, Data& d) {
+		return we >> d.m_nDzien >> d.m_nMiesiac >> d.m_nRok;
+
+	}
 };
+
 
