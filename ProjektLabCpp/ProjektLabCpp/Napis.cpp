@@ -46,6 +46,7 @@ void Napis::Wpisz()
 int Napis::SprawdzNapis(const char* por_napis) const
 {
 	return strcmp(por_napis, m_pszNapis);
+	return -strcmp(por_napis, m_pszNapis);
 }
 
 Napis& Napis::operator=(const Napis& wzor)
