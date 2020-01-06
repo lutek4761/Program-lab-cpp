@@ -1,5 +1,9 @@
 #include "Napis.h"
 
+Napis::~Napis() {
+	cout << "chuj";
+}
+
 const char* Napis::Zwroc() const
 {
 	return m_pszNapis;
@@ -24,5 +28,5 @@ void Napis::Wpisz()
 
 int Napis::SprawdzNapis(const char* por_napis) const
 {
-	return strcmp(por_napis, m_pszNapis);
+	return -strcmp(por_napis, m_pszNapis);
 }

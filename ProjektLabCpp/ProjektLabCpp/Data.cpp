@@ -10,6 +10,7 @@ void Data::Ustaw(int d, int m, int r) {
 	m_nDzien = d;
 	m_nMiesiac = m;
 	m_nRok = r;
+	Koryguj();
 }
 int Data::Dzien() const {
 	return m_nDzien;
@@ -21,7 +22,7 @@ int Data::Rok() const {
 	return m_nRok;
 }
 void Data::Wypisz() const{
-	cout << m_nDzien << "-" << m_nMiesiac << "-" << m_nRok;
+	cout << m_nDzien << "-" << m_nMiesiac << "-" << m_nRok << endl;
 }
 void Data::Wpisz() {
 	cin >> m_nDzien >> m_nMiesiac >> m_nRok;
