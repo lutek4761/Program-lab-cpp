@@ -13,8 +13,4 @@ public:
 	void Wpisz();
 	int SprawdzNapis(const char* por_napis) const;
 };
-#pragma once
-class Napis
-{
-};
 

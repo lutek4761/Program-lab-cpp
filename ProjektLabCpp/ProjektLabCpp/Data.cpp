@@ -1,6 +1,5 @@
 
 #include "Data.h"
-#include "Data.h"
 Data::Data() 
 	: m_nDzien(1), m_nMiesiac(1), m_nRok(2000)
 {}

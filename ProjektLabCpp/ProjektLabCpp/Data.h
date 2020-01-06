@@ -1,7 +1,4 @@
 
-class Data
-{
-};
 #pragma once
 #include <iostream>
 using namespace std;
