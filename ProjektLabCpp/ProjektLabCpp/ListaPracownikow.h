@@ -9,5 +9,6 @@ public:
 	ListaPracownikow();
 	void Dodaj(const Pracownik& p);
 	void Usun(const Pracownik& p);
+	void WypiszPracownikow()  const;
+	const Pracownik* Szukaj(const char* nazwisko, const char* imie)const;
 };
-

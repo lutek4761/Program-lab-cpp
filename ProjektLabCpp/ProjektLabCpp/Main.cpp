@@ -1,30 +1,82 @@
 #include<iostream>
-#include "Napis.h"
-#include "Data.h"
-#include "Pracownik.h"
-
+#include "ListaPracownikow.h"
+#include<fstream>
+#include <conio.h>
 using namespace std;
 
 
 
+
 int main() {
-<<<<<<< HEAD
-	Data d;
-	d.Ustaw(1, 1, 2000);
-	cin >> d;
-	d.Koryguj();
-	cout << d;
-=======
-	Data d1(1, 1, 2000);
-	Napis imie1;
-	Napis naziwsko1;
-	imie1.Ustaw("a");
-	naziwsko1.Ustaw("b");
-	Pracownik p1;
-	p1.Imie(imie1.Zwroc());
-	p1.Nazwisko(naziwsko1.Zwroc());
-	cout<<p1.SprawdzImie("b");
+	int znak;
+	ListaPracownikow lista;
+
+	while (1) {
+		cout << "1. Dodaj pracownika" << endl;
+		cout << "2. Usun pracownika" << endl;
+		cout << "3. Szukaj" << endl;
+		cout << "4. Wypisz pracownikow" << endl;
+		cout << "5. Zapis do pliku" << endl;
+		cout << "6. Wczytaj z pliku" << endl;
+		cout << "7. Wyjscie" << endl;
+		cout << endl;
+		znak = _getch();
+		switch (znak)
+		{
+		case 49: {
+			Pracownik p;
+			p.Wpisz();
+			lista.Dodaj(p);
+		}break;
+		case 50: {
+			Pracownik p;
+			p.Wpisz();
+			lista.Usun(p);
+		}break;
+		case 51: {
+			Napis imie;
+			Napis nazwisko;
+			cout << "Podaj imie: ";
+			imie.Wpisz();
+			cout << "Podaj nazwisko: ";
+			nazwisko.Wpisz();
+			const Pracownik* p = lista.Szukaj(nazwisko.Zwroc(), imie.Zwroc());
+			cout << endl;
+			p->Wypisz();
+		}break;
+		case 52:
+		{
+			lista.WypiszPracownikow();
+		}
+			break;
+		case 53:
+		{
+			ofstream file;
+			file.open("dane.txt", std::ios::binary | std::ios::app);
+			if (file.good())
+			{
+				file.write(reinterpret_cast <char*>(&lista), sizeof(lista));
+				file.close();
+			}
+		}	break;
+		case 54:
+		{
+			std::fstream file;
+			file.open("dane.txt", std::ios::binary | std::ios::in);
+			if (file.good())
+			{
+				file.read(reinterpret_cast <char*>(&lista), 256); // 256- tak wiem- Ÿle.
+				file.close();
+			}
+		}break;
+		case 55:
+		{
+			exit(0);
+		}break;
+
+		}
+		cout << endl;
+	}
 	
->>>>>>> 6fb6f78b3216d63d2ff6918b058e32e5da21be6d
 	return 0;
 }

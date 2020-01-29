@@ -1,8 +1,19 @@
 
 #include "Pracownik.h"
-Pracownik::~Pracownik() {
-	m_Imie.~Napis();
-	m_Nazwisko.~Napis();
+static int idPracownika = -20;
+Pracownik::Pracownik(const char* imie, const char* nazwisko, Data dataUrodzenia)
+	:m_Imie(imie), m_Nazwisko(nazwisko), m_DataUrodzenia(dataUrodzenia), m_nIDZatrudnienia(idPracownika++)
+{
+	
+}
+
+Pracownik::Pracownik(const Pracownik& wzorzec)
+	: m_nIDZatrudnienia(idPracownika++)
+{
+	m_Imie = wzorzec.m_Imie;
+	m_Nazwisko = wzorzec.m_Nazwisko;
+	m_DataUrodzenia = wzorzec.m_DataUrodzenia;
+	
 }
 const char* Pracownik::Imie() const {
 	return m_Imie.Zwroc();
@@ -20,13 +31,17 @@ void Pracownik::DataUrodzenia(int nowy_dzien, int nowy_miesiac, int nowy_rok) {
 	m_DataUrodzenia.Ustaw(nowy_dzien, nowy_miesiac, nowy_rok);
 }
 void Pracownik::Wypisz() const {
+	cout << m_nIDZatrudnienia << endl;
 	m_Imie.Wypisz();
 	m_Nazwisko.Wypisz();
 	m_DataUrodzenia.Wypisz();
 }
 void Pracownik::Wpisz() {
+	cout << "Podaj imie pracownika: ";
 	m_Imie.Wpisz();
+	cout << "Podaj nazwisko pracownika: ";
 	m_Nazwisko.Wpisz();
+	cout << "Podaj date urodzenia pracownika: ";
 	m_DataUrodzenia.Wpisz();
 }
 int Pracownik::SprawdzImie(const char* por_imie) const {
@@ -45,3 +60,20 @@ int Pracownik::Porownaj(const Pracownik& wzorzec) const {
 		return 1;
 	return -1;
 }
+
+Pracownik& Pracownik::operator=(const Pracownik& wzorzec)
+{
+	if (this == &wzorzec)return *this;
+	this->~Pracownik();
+	new(this) Pracownik(wzorzec);
+	return *this;
+}
+
+void Pracownik::WypiszDane() {
+	Wypisz();
+}
+
+Pracownik* Pracownik::KopiaObiektu() {
+	return new Pracownik(*this);
+}
+

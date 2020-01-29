@@ -2,23 +2,18 @@
 
 Napis::Napis(const char* nap)
 {
-	m_nDl = strlen(nap);
+	m_nDl = strlen(nap) + 1;
 	m_pszNapis = new char[m_nDl];
 	strcpy_s(m_pszNapis, m_nDl, nap);
-	
+	m_pszNapis[m_nDl - 1] = '\0';
 }
 
 Napis::Napis(const Napis& wzor)
 {
-	m_nDl = strlen(wzor.Zwroc());
+	m_nDl = strlen(wzor.Zwroc()) + 1;
 	m_pszNapis = new char[m_nDl];
 	strcpy_s(m_pszNapis, m_nDl, wzor.Zwroc());
-	
-}
-
-Napis::~Napis()
-{
-	delete[] m_pszNapis;
+	m_pszNapis[m_nDl - 1] = '\0';
 }
 
 const char* Napis::Zwroc() const
@@ -41,11 +36,13 @@ void Napis::Wypisz() const
 void Napis::Wpisz()
 {
 	cin >> m_pszNapis;
+	m_nDl = strlen(m_pszNapis) + 1;
 }
 
 int Napis::SprawdzNapis(const char* por_napis) const
 {
-	return strcmp(por_napis, m_pszNapis);
+	if (strlen(por_napis) == 0 && strlen(m_pszNapis) != 0)return -1;
+	if (strlen(por_napis) != 0 && strlen(m_pszNapis) == 0)return 1;
 	return -strcmp(por_napis, m_pszNapis);
 }
 

@@ -9,6 +9,7 @@ private:
 	int m_nDzien, m_nMiesiac, m_nRok;
 public:
 	Data();
+	Data(const Data& wzorzec);
 	Data(int d, int m, int r);
 	void Ustaw(int d, int m, int r);
 	int Dzien() const;
@@ -25,6 +26,7 @@ public:
 		return we >> d.m_nDzien >> d.m_nMiesiac >> d.m_nRok;
 
 	}
+	Data& operator=(const Data& wzor);
 };
 
 

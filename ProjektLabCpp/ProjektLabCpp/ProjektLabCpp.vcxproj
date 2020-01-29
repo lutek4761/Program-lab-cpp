@@ -124,6 +124,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Data.cpp" />
+    <ClCompile Include="Kierownik.cpp" />
     <ClCompile Include="ListaPracownikow.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Napis.cpp" />
@@ -131,6 +132,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Data.h" />
+    <ClInclude Include="Kierownik.h" />
     <ClInclude Include="ListaPracownikow.h" />
     <ClInclude Include="Napis.h" />
     <ClInclude Include="Pracownik.h" />

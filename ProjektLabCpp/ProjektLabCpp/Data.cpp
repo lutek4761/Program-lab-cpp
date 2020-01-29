@@ -2,7 +2,15 @@
 #include "Data.h"
 Data::Data() 
 	: m_nDzien(1), m_nMiesiac(1), m_nRok(2000)
-{}
+{
+	Koryguj();
+}
+Data::Data(const Data & wzorzec)
+{
+	m_nDzien = wzorzec.m_nDzien;
+	m_nMiesiac = wzorzec.m_nMiesiac;
+	m_nRok = wzorzec.m_nRok;
+}
 Data::Data(int d, int m, int r)
 	: m_nDzien(d), m_nMiesiac(m), m_nRok(r)
 {}
@@ -26,6 +34,7 @@ void Data::Wypisz() const{
 }
 void Data::Wpisz() {
 	cin >> m_nDzien >> m_nMiesiac >> m_nRok;
+	Koryguj();
 }
 void Data::Koryguj() {
 	if (m_nDzien < 0) m_nDzien = 1;
@@ -47,3 +56,12 @@ int Data::Porownaj(const Data& wzor) const {
 		(wzor.m_nRok == m_nRok and wzor.m_nMiesiac == m_nMiesiac and wzor.m_nDzien > m_nDzien)) return -1;
 	return 1;
 }
+
+Data& Data::operator=(const Data& wzor)
+{
+	if (this == &wzor)return *this;
+	this->~Data();
+	new(this) Data(wzor);
+	return *this;
+}
+
