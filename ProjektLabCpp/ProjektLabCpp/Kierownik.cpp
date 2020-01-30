@@ -1,10 +1,12 @@
 #include "Kierownik.h"
 
-Kierownik::Kierownik(int m_nLiczbaPracownikow = 0, Napis m_NazwaDzialu = "") 
-	:m_nLiczbaPracownikow(m_nLiczbaPracownikow), m_NazwaDzialu(m_NazwaDzialu)
-{}
-Kierownik::Kierownik(Kierownik& k) 
-	:m_nLiczbaPracownikow(k.m_nLiczbaPracownikow), m_NazwaDzialu(k.m_NazwaDzialu)
+Kierownik::Kierownik(const char* imie, const char* nazwisko, Data dataUrodzenia, int m_nLiczbaPracownikow, Napis m_NazwaDzialu)
+	:Pracownik(imie, nazwisko, dataUrodzenia), m_nLiczbaPracownikow(m_nLiczbaPracownikow), m_NazwaDzialu(m_NazwaDzialu)
+{
+	
+}
+Kierownik::Kierownik(const Kierownik& k) 
+	:Pracownik(k), m_nLiczbaPracownikow(k.m_nLiczbaPracownikow), m_NazwaDzialu(k.m_NazwaDzialu)
 {}
 Kierownik& Kierownik::operator= (Kierownik& k) {
 	if (this == &k)return *this;
@@ -15,10 +17,19 @@ Kierownik& Kierownik::operator= (Kierownik& k) {
 bool Kierownik::operator== (const Kierownik& k) const {
 	return k == *this and k.m_nLiczbaPracownikow == m_nLiczbaPracownikow and !k.m_NazwaDzialu.SprawdzNapis(this->m_NazwaDzialu.Zwroc());
 }
-void Kierownik::WypiszDane() {
-	Pracownik::WypiszDane();
-	cout << " " << m_NazwaDzialu << " L. prac: " << m_nLiczbaPracownikow;
+void Kierownik::Wpisz()
+{
+	Pracownik::Wpisz();
+	cout << "Podaj nazwe dzialu: ";
+	cin >> m_NazwaDzialu;
+	cout << "Podaj liczbe pracownikow: ";
+	cin >> m_nLiczbaPracownikow;
 }
-Pracownik* Kierownik::KopiaObiektu() {
+void Kierownik::Wypisz()const {
+	Pracownik::Wypisz();
+	cout <<"Nazwa dzialu: "<< m_NazwaDzialu << endl << "Liczba pracownikow: " << m_nLiczbaPracownikow << endl;
+}
+Pracownik* Kierownik::KopiaObiektu()const {
 	return new Kierownik(*this);
 }
+

@@ -31,17 +31,20 @@ void Pracownik::DataUrodzenia(int nowy_dzien, int nowy_miesiac, int nowy_rok) {
 	m_DataUrodzenia.Ustaw(nowy_dzien, nowy_miesiac, nowy_rok);
 }
 void Pracownik::Wypisz() const {
-	cout << m_nIDZatrudnienia << endl;
+	cout<< "ID zatrudnienia: " << m_nIDZatrudnienia << endl;
+	cout << "Imie: ";
 	m_Imie.Wypisz();
+	cout << "Nazwisko: ";
 	m_Nazwisko.Wypisz();
+	cout << "Data Urodzenia: ";
 	m_DataUrodzenia.Wypisz();
 }
 void Pracownik::Wpisz() {
-	cout << "Podaj imie pracownika: ";
+	cout << "Podaj imie: ";
 	m_Imie.Wpisz();
-	cout << "Podaj nazwisko pracownika: ";
+	cout << "Podaj nazwisko: ";
 	m_Nazwisko.Wpisz();
-	cout << "Podaj date urodzenia pracownika: ";
+	cout << "Podaj date urodzenia: ";
 	m_DataUrodzenia.Wpisz();
 }
 int Pracownik::SprawdzImie(const char* por_imie) const {
@@ -51,6 +54,7 @@ int Pracownik::SprawdzNazwisko(const char* por_nazwisko) const {
 	return m_Nazwisko.SprawdzNapis(por_nazwisko);
 }
 int Pracownik::Porownaj(const Pracownik& wzorzec) const {
+	
 	if (m_Imie.SprawdzNapis(wzorzec.Imie()) == 0 and m_Nazwisko.SprawdzNapis(wzorzec.Nazwisko()) == 0 
 		and m_DataUrodzenia.Porownaj(wzorzec.m_DataUrodzenia) == 0) 
 		return 0;
@@ -69,11 +73,7 @@ Pracownik& Pracownik::operator=(const Pracownik& wzorzec)
 	return *this;
 }
 
-void Pracownik::WypiszDane() {
-	Wypisz();
-}
-
-Pracownik* Pracownik::KopiaObiektu() {
+Pracownik* Pracownik::KopiaObiektu()const {
 	return new Pracownik(*this);
 }
 

@@ -129,6 +129,7 @@
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Napis.cpp" />
     <ClCompile Include="Pracownik.cpp" />
+    <ClCompile Include="WirtualnaTablicaPracownikow.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Data.h" />
@@ -136,6 +137,7 @@
     <ClInclude Include="ListaPracownikow.h" />
     <ClInclude Include="Napis.h" />
     <ClInclude Include="Pracownik.h" />
+    <ClInclude Include="WirtualnaTablicaPracownikow.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
